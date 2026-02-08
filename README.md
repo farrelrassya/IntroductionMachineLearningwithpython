@@ -2,103 +2,94 @@
 
 <a style="width: 400px" href="https://www.amazon.com/Introduction-Machine-Learning-Python-Scientists/dp/1449369413"><img alt="Introduction to Machine Learning with Python Cover" src="./cover.png" style="width: 400px; height: auto; padding: 10px;"></a>
 
-This repository contains the reproduced code, exercises, and notes based on the O'Reilly book "Introduction to Machine Learning with Python". The primary goal of this project is to provide a working, up-to-date environment to run the examples provided in the book, addressing common compatibility issues with modern Python libraries.
 
-📋 Table of Contents
+**Original Authors:** Andreas C. Mueller & Sarah Guido
 
-Prerequisites
+This repository contains the reproduced code, exercises, and notes based on the O'Reilly book *"Introduction to Machine Learning with Python"*. The primary goal of this project is to provide a working, up-to-date environment to run the examples provided in the book, addressing common compatibility issues with modern Python libraries.
 
-Installation Guide
+## 📋 Table of Contents
 
-Option A: Conda (Recommended)
+- [Prerequisites](#-prerequisites)
+- [Installation Guide](#-installation-guide)
+  - [Option A: Conda (Recommended)](#option-a-conda-recommended)
+  - [Option B: Python Virtual Environment](#option-b-python-virtual-environment)
+- [Project Structure](#-project-structure)
+- [Usage](#-usage)
+- [Troubleshooting & Common Issues](#-troubleshooting--common-issues)
+- [Dependencies](#-dependencies)
+- [Acknowledgments](#-acknowledgments)
 
-Option B: Python Virtual Environment
-
-Project Structure
-
-Usage
-
-Troubleshooting & Common Issues
-
-Dependencies
-
-Acknowledgments
-
-📋 Prerequisites
+## 📋 Prerequisites
 
 To ensure a smooth setup, please ensure you have the following installed on your system:
 
-Python 3.9+: While the book was written for earlier versions, this repo is tested on Python 3.9+.
+* **Python 3.9+**: While the book was written for earlier versions, this repo is tested on Python 3.9+.
+* **Anaconda or Miniconda**: Highly recommended for data science environment management.
+* **Git**: For version control.
+* **Graphviz**: Required for visualizing decision trees (see Troubleshooting section).
 
-Anaconda or Miniconda: Highly recommended for data science environment management.
+## 🛠 Installation Guide
 
-Git: For version control.
+The book relies heavily on a custom helper library called `mglearn`, written by the authors to simplify plotting and data loading.
 
-Graphviz: Required for visualizing decision trees (see Troubleshooting section).
+### Option A: Conda (Recommended)
+Using Conda ensures that binary dependencies (like those needed for `numpy` and `scipy`) are handled correctly.
 
-🛠 Installation Guide
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/farrelrassya/IntroductionMachineLearningwithpython.git](https://github.com/farrelrassya/IntroductionMachineLearningwithpython.git)
+    cd IntroductionMachineLearningwithpython
+    ```
 
-The book relies heavily on a custom helper library called mglearn, written by the authors to simplify plotting and data loading.
+2.  **Create a dedicated environment:**
+    ```bash
+    conda create -n ml-book python=3.9
+    ```
 
-Option A: Conda (Recommended)
+3.  **Activate the environment:**
+    ```bash
+    conda activate ml-book
+    ```
 
-Using Conda ensures that binary dependencies (like those needed for numpy and scipy) are handled correctly.
+4.  **Install core data science libraries:**
+    ```bash
+    conda install numpy pandas scikit-learn matplotlib jupyter seaborn
+    ```
 
-Clone the repository:
+5.  **Install the book's helper library and utilities:**
+    ```bash
+    pip install mglearn imageio graphviz
+    ```
 
-git clone [https://github.com/farrelrassya/IntroductionMachineLearningwithpython.git](https://github.com/farrelrassya/IntroductionMachineLearningwithpython.git)
-cd intro-to-ml-python
+### Option B: Python Virtual Environment
+If you prefer using standard `pip`:
 
+1.  **Create a virtual environment:**
+    ```bash
+    # Windows
+    python -m venv venv
+    # macOS/Linux
+    python3 -m venv venv
+    ```
 
-Create a dedicated environment:
+2.  **Activate the environment:**
+    ```bash
+    # Windows
+    .\venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
 
-conda create -n ml-book python=3.9
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-
-Activate the environment:
-
-conda activate ml-book
-
-
-Install core data science libraries:
-
-conda install numpy pandas scikit-learn matplotlib jupyter seaborn
-
-
-Install the book's helper library and utilities:
-
-pip install mglearn imageio graphviz
-
-
-Option B: Python Virtual Environment
-
-If you prefer using standard pip:
-
-Create a virtual environment:
-
-# Windows
-python -m venv venv
-# macOS/Linux
-python3 -m venv venv
-
-
-Activate the environment:
-
-# Windows
-.\venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-📂 Project Structure
+## 📂 Project Structure
 
 The repository is organized by chapter to mirror the book's progression:
 
+```text
 .
 ├── Chapter 01 - Introduction
 │   └── 01_introduction.ipynb
@@ -119,58 +110,64 @@ The repository is organized by chapter to mirror the book's progression:
 ├── README.md
 └── requirements.txt
 
+```
 
-🚀 Usage
+## 🚀 Usage
 
-Activate your environment:
-
+1. Activate your environment:
+```bash
 conda activate ml-book
 
+```
 
-Launch the Jupyter Notebook server:
 
+2. Launch the Jupyter Notebook server:
+```bash
 jupyter notebook
 
+```
 
-Navigate to the specific chapter folder and open the .ipynb file.
 
-⚠️ Troubleshooting & Common Issues
+3. Navigate to the specific chapter folder and open the `.ipynb` file.
 
-Since the book was published, scikit-learn has undergone significant updates. Here are common issues you might encounter:
+## ⚠️ Troubleshooting & Common Issues
 
-1. ModuleNotFoundError: No module named 'mglearn'
+Since the book was published, `scikit-learn` has undergone significant updates. Here are common issues you might encounter:
 
-Cause: The helper library is not installed.
-Fix: Run pip install mglearn inside your active environment.
+### 1. `ModuleNotFoundError: No module named 'mglearn'`
 
-2. Graphviz Executable Not Found
+**Cause:** The helper library is not installed.
+**Fix:** Run `pip install mglearn` inside your active environment.
 
-Issue: When plotting Decision Trees, you get an error stating GraphViz's executables not found.
-Fix: Installing the python library graphviz is not enough; you must install the system binary.
+### 2. Graphviz Executable Not Found
 
-Windows: Download the installer from the Graphviz website, run it, and ensure you check the box "Add Graphviz to PATH".
+**Issue:** When plotting Decision Trees, you get an error stating `GraphViz's executables not found`.
+**Fix:** Installing the python library `graphviz` is not enough; you must install the system binary.
 
-macOS: brew install graphviz
+* **Windows:** Download the installer from the [Graphviz website](https://graphviz.org/download/), run it, and **ensure you check the box "Add Graphviz to PATH"**.
+* **macOS:** `brew install graphviz`
+* **Linux (Ubuntu/Debian):** `sudo apt-get install graphviz`
 
-Linux (Ubuntu/Debian): sudo apt-get install graphviz
+### 3. FutureWarnings and DeprecationWarnings
 
-3. FutureWarnings and DeprecationWarnings
+**Issue:** You see red warning boxes regarding "default values changing" or "functions being deprecated."
+**Context:** The API of `scikit-learn` evolves. For example, the default value of `n_estimators` in Random Forest changed from 10 to 100 in newer versions.
+**Fix:** These are generally safe to ignore for learning purposes. However, it is good practice to explicitly set parameters mentioned in the warnings to silence them.
 
-Issue: You see red warning boxes regarding "default values changing" or "functions being deprecated."
-Context: The API of scikit-learn evolves. For example, the default value of n_estimators in Random Forest changed from 10 to 100 in newer versions.
-Fix: These are generally safe to ignore for learning purposes. However, it is good practice to explicitly set parameters mentioned in the warnings to silence them.
+### 4. `memory_profiler` or other minor missing libs
 
-4. memory_profiler or other minor missing libs
+Some sections of the book use `memory_profiler`. Install it via:
 
-Some sections of the book use memory_profiler. Install it via:
-
+```bash
 pip install memory_profiler
 
+```
 
-📦 Dependencies
+## 📦 Dependencies
 
-The core requirements for this project are listed below. If creating a requirements.txt file manually, include:
+The core requirements for this project are listed below. If creating a `requirements.txt` file manually, include:
 
+```text
 numpy
 pandas
 scikit-learn>=1.0
@@ -180,11 +177,12 @@ jupyter
 imageio
 graphviz
 
+```
 
-👏 Acknowledgments
+## 👏 Acknowledgments
 
-Andreas C. Mueller & Sarah Guido: For writing the excellent book that serves as the foundation for this code.
+* **Andreas C. Mueller & Sarah Guido**: For writing the excellent book that serves as the foundation for this code.
+* **scikit-learn community**: For maintaining the library used throughout these examples.
 
-scikit-learn community: For maintaining the library used throughout these examples.
+For more information on the book, visit the [O'Reilly website](https://www.oreilly.com/library/view/introduction-to-machine/9781449369880/).
 
-For more information on the book, visit the O'Reilly website.
