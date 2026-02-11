@@ -1,4 +1,4 @@
-# Introduction to Machine Learning with Python
+# Introduction to Machine Learning with Pythonn
 
 <a style="width: 400px" href="https://www.amazon.com/Introduction-Machine-Learning-Python-Scientists/dp/1449369413"><img alt="Introduction to Machine Learning with Python Cover" src="./cover.png" style="width: 400px; height: auto; padding: 10px;"></a>
 
